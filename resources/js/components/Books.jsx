@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const RenderRows = (props) => {
   return props.books.map(book => {
     return(
       <tr key={book.id}>
-        <td>{book.id}</td>
-        <td>{book.title}</td>
+        <Link to={`book/${book.id}`}>
+          <td>{book.id}</td>
+        </Link>
+          <td>{book.title}</td>
       </tr>
     )
   })

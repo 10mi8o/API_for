@@ -6,7 +6,8 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 import GlobalNav from "./Common/GlobalNav";
 import Top from './Top';
 import About from './About';
-import BooksApp from "./BooksApp";
+import Books from "./Books";
+import BookDetail from "./BookDetail";
 
 const App = () => {
   return(
@@ -16,8 +17,8 @@ const App = () => {
           {/*完全一致のため、exactを付与*/}
           <Route path="/" exact component={Top} />
           <Route path="/about" component={About} />
+          <Route path="/books" component={Books}/>
         </Switch>
-        <BooksApp />
       </React.Fragment>
   )
 }
