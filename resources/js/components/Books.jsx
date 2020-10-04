@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 const RenderRows = (props) => {
   return props.books.map(book => {
@@ -14,22 +15,17 @@ const RenderRows = (props) => {
   })
 }
 
-const BooksApp = () => {
+const Books = () => {
   const [books, setBooks] = useState([]);
 
   useEffect(()=> {
-    getBookDate()
+    getBooks();
   },[]);
 
-  function getBookDate() {
-    axios.get('/api/get')
-      .then(res => {
-        setBooks(res.data);
-        console.log(res.data)
-      })
-      .catch((err) => {
-        console.log(err);
-      })
+  const getBooks = async () => {
+    const response = await axios.get('/api/book');
+    setBooks(response.data.books);
+    console.log(response.data);
   }
 
   return (
@@ -49,4 +45,4 @@ const BooksApp = () => {
   )
 }
 
-export default BooksApp;
+export default Books;
